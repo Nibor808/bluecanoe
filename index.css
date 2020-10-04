@@ -8,15 +8,38 @@ body {
     background: yellow;
 }
 
+header {
+    margin: 40px;
+}
+
 .container {
     padding: 20px;
+    margin-top: 80px;
     display: grid;
     grid-auto-rows: minmax(100px, auto);
     row-gap: 1em;
 }
 
-header {
-    display: grid;
+.animation-container {
+    margin: 100px 0;
+    position: relative;
+    height: var(--container-height);
+    width: var(--container-width);
+    /*border-right: 5px solid black;*/
+    /*border-bottom: 5px solid black;*/
+    /*border-top: 5px solid black;*/
+    display: flex;
+    justify-content: space-around;
+}
+
+.us {
+    background: beige;
+    height: 300px;
+    width: 300px;
+    box-shadow: var(--shadow);
+    position: absolute;
+    top: -152px;
+    left: 0;
 }
 
 .text-container {
@@ -25,13 +48,11 @@ header {
     grid-template-rows: 1fr 1fr;
     height: var(--container-height);
     width: var(--container-width);
-    z-index: 1;
     align-items: center;
 }
 
 .text-bubble {
-    border: 1px solid darkred;
-    border-radius: 20px;
+    /*border: 1px solid darkred;*/
     height: 60%;
     width: 70%;
 }
@@ -52,43 +73,6 @@ header {
     opacity: 100%;
 }
 
-#text-1 {
-    animation: fade-text-out 10s ease forwards;
-}
-
-#text-2,
-#text-3 {
-    animation: fade-text-in-out 18s ease forwards;
-}
-
-#text-4 {
-    animation: fade-text-in 10s ease forwards;
-}
-
-.us {
-    background: beige;
-    height: 300px;
-    width: 300px;
-    box-shadow: var(--shadow);
-    z-index: 10;
-    position: absolute;
-    top: -152px;
-    left: 0;
-}
-
-.animation-container {
-    margin: 100px 0;
-    position: relative;
-    z-index: -1;
-    height: var(--container-height);
-    width: var(--container-width);
-    border-right: 5px solid black;
-    border-bottom: 5px solid black;
-    border-top: 5px solid black;
-    display: flex;
-    justify-content: space-around;
-}
-
 .slide-left {
     animation: slide-left 10s normal forwards, us-rotate 0.7s infinite;
 }
@@ -99,6 +83,26 @@ header {
 
 .slide-up {
     animation: slide-up 5s normal forwards;
+}
+
+@keyframes fade-in-canoe {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes fade-out-canoe {
+    from {
+        opacity: 100%;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 @keyframes slide-right {
@@ -138,10 +142,6 @@ header {
 }
 
 @keyframes us-rotate {
-    /*0% {*/
-    /*    transform: rotate(0deg);*/
-    /*}*/
-
     25% {
         transform: rotate(20deg);
     }
@@ -190,8 +190,3 @@ header {
 }
 
 /* MEDIA QUERIES */
-@media only screen and (min-width: 1600px) {
-    .box {
-        width: 89.5%;
-    }
-}
