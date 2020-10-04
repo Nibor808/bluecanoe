@@ -1,7 +1,7 @@
 :root {
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     --container-height: 1000px;
-    --container-width: 89.75%;
+    --container-width: 90%;
 }
 
 body {
@@ -20,31 +20,59 @@ header {
 }
 
 .text-container {
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 10px 10px;
     height: var(--container-height);
     width: var(--container-width);
     z-index: 1;
+    align-items: center;
 }
 
 .text-bubble {
     border: 1px solid darkred;
     border-radius: 20px;
-    height: 80%;
+    height: 60%;
+    width: 70%;
+}
+
+#text-bubble-3,
+#text-bubble-4 {
+    margin-top: 100px;
+}
+
+#text-bubble-1,
+#text-bubble-2 {
+    margin-bottom: 100px;
+}
+
+#text-2,
+#text-3,
+#text-4 {
+    opacity: 100%;
+}
+
+#text-1 {
+    animation: fade-text-out 10s ease forwards;
+}
+
+#text-2,
+#text-3 {
+    animation: fade-text-in-out 18s ease forwards;
+}
+
+#text-4 {
+    animation: fade-text-in 10s ease forwards;
 }
 
 .us {
     background: beige;
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     box-shadow: var(--shadow);
-    transform: rotate(-20deg);
     z-index: 10;
     position: absolute;
-    top: -105px;
+    top: -152px;
     left: 0;
 }
 
@@ -61,40 +89,58 @@ header {
     justify-content: space-around;
 }
 
-.sliding {
-    animation: us-slide 20s normal forwards;
+.slide-left {
+    animation: slide-left 10s normal forwards, us-rotate 0.7s infinite;
 }
 
-.sliding-rotating {
-    animation: us-slide 20s normal forwards, us-rotate 0.7s infinite;
+.slide-right {
+    animation: slide-right 10s normal forwards, us-rotate 0.7s infinite;
 }
 
-@keyframes us-slide {
-    0% {
+.slide-up {
+    animation: slide-up 5s normal forwards;
+}
+
+@keyframes slide-right {
+    from {
         margin-left: 5px;
-        margin-top: 1000px;
+        margin-top: var(--container-height);
     }
 
-    40% {
-        margin-left: 95%;
-        margin-top: 1000px;
+    to {
+        margin-left: var(--container-width);
+        margin-top: var(--container-height);
     }
+}
 
-    60% {
-        margin-left: 95%;
+@keyframes slide-left {
+    from {
+        margin-left: var(--container-width);
         margin-top: 0;
     }
 
-    100% {
+    to {
         margin-left: 5px;
+        margin-top: 0;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        margin-left: var(--container-width);
+        margin-top: var(--container-height);
+    }
+
+    to {
+        margin-left: var(--container-width);
         margin-top: 0;
     }
 }
 
 @keyframes us-rotate {
-    0% {
-        transform: rotate(0deg);
-    }
+    /*0% {*/
+    /*    transform: rotate(0deg);*/
+    /*}*/
 
     25% {
         transform: rotate(20deg);
@@ -106,6 +152,40 @@ header {
 
     100% {
         transform: rotate(0deg);
+    }
+}
+
+@keyframes fade-text-out {
+    from {
+        opacity: 100%;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-text-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes fade-text-in-out {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
 
