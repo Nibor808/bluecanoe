@@ -18,17 +18,17 @@
         usBlock.addClass("slide-right");
         usBlock[0].scrollIntoView();
 
-        const setBackgroundToCanoe = bubble => {
+        const setBackgroundToImg = (bubble, url) => {
             bubble.css("animation-play-state", "paused");
             bubble.text("");
-            bubble.css("background", "url(./canoe.jpeg) no-repeat center");
+            bubble.css("background", `url(${url}) no-repeat center`);
             bubble.css("height", "100%");
             bubble.css("animation", "fade-in-canoe 2s ease forwards");
             bubble.css("animation-play-state", "running");
         };
 
-        const fadeCanoe = bubble => {
-            bubble.css("animation", "fade-out-canoe 2s ease forwards");
+        const fadeImg = (bubble, animation) => {
+            bubble.css("animation",  `${animation} 2s ease forwards`);
         };
 
         const setBackgroundToText = bubble => {
@@ -58,7 +58,7 @@
             textBubble4Text.css("animation-play-state", "paused");
 
             textBubble1Text.text(lorem);
-            setBackgroundToCanoe(textBubble2Text);
+            setBackgroundToImg(textBubble2Text, "./canoe.jpeg");
             textBubble3Text.text(lorem);
             textBubble4Text.text(lorem);
         }, 0);
@@ -70,7 +70,7 @@
 
         setTimeout(() => {
             textBubble2Text.css("animation-play-state", "running");
-            fadeCanoe(textBubble2Text);
+            fadeImg(textBubble2Text, "fade-out-canoe");
         }, timeUnit * 2);
 
         setTimeout(() => {
@@ -107,7 +107,7 @@
 
         setTimeout(() => {
             usBlock.css("animation-play-state", "paused");
-            setBackgroundToCanoe(textBubble3Text);
+            setBackgroundToImg(textBubble3Text, "./canoe.jpeg");
         }, (timeUnit * 8) + 500);
     });
 })();
