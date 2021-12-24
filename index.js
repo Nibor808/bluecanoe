@@ -1,49 +1,51 @@
 (() => {
     $(document).ready(() => {
-        const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        const textBubble1Text =
+            "Hello! We're Jess and Robin and this is our blue canoe. During the pandemic in 2020 we decided to make more time for the out doors.";
 
         const usBlock = $("#us");
-        const textBubble1Text = $("#text-1");
-        textBubble1Text.css("animation", "fade-text-out 10s ease forwards");
+        const us2 = document.querySelector("#us");
+        const animationContainer = $("#animation-container");
+        const textContainer = $("#text-container");
 
-        const textBubble2Text = $("#text-2");
-        textBubble2Text.css("animation", "fade-text-in-out 18s ease forwards");
+        const textBubble = $("#text");
+        textBubble.css("animation", "fade-text-out 10s ease forwards");
 
-        const textBubble3Text = $("#text-3");
-        textBubble3Text.css("animation", "fade-text-in-out 18s ease forwards");
-
-        const textBubble4Text = $("#text-4");
-        textBubble4Text.css("animation", "fade-text-in 10s ease forwards");
-
-        usBlock.addClass("slide-right");
+        usBlock.addClass("rotateUs");
+        animationContainer.addClass("slide-right-1");
         usBlock[0].scrollIntoView();
 
         const setBackgroundToImg = (bubble, url) => {
             bubble.css("animation-play-state", "paused");
             bubble.text("");
+            bubble.css("transition", "width ease");
+            bubble.css("width", "700px");
+            textContainer.css("margin-top", "100px");
+
             bubble.css("background", `url(${url}) no-repeat center`);
-            bubble.css("height", "100%");
+            bubble.css("height", "300px");
             bubble.css("animation", "fade-in-canoe 2s ease forwards");
             bubble.css("animation-play-state", "running");
         };
 
         const fadeImg = (bubble, animation) => {
-            bubble.css("animation",  `${animation} 2s ease forwards`);
+            bubble.css("animation", `${animation} 2s ease forwards`);
         };
 
-        const setBackgroundToText = bubble => {
-            bubble.css("animation", "fade-text-in-out 18s ease forwards");
+        const setBackgroundToText = (bubble) => {
+            bubble.css("animation", "fade-text-in 5s ease forwards");
             bubble.css("animation-play-state", "");
-            bubble.text(lorem);
+            textContainer.css("margin-top", "160px");
+            bubble.text(textBubble1Text);
             bubble.css("background", "");
             bubble.css("height", "");
         };
 
         const interval = setInterval(() => {
-            const usBottom = usBlock.offset().top + 300;
-            const windowHeight = $(window).innerHeight();
+            const us = us2.getBoundingClientRect();
+            const windowWidth = $(window).innerWidth();
 
-            if (usBottom < windowHeight) {
+            if (us.right > windowWidth) {
                 usBlock[0].scrollIntoView();
             }
         }, 10);
@@ -52,62 +54,37 @@
 
         setTimeout(() => {
             usBlock.css("animation-play-state", "paused");
-            textBubble1Text.css("animation-play-state", "paused");
-            textBubble2Text.css("animation-play-state", "paused");
-            textBubble3Text.css("animation-play-state", "paused");
-            textBubble4Text.css("animation-play-state", "paused");
+            animationContainer.css("animation-play-state", "paused");
+            setBackgroundToText(textBubble);
 
-            textBubble1Text.text(lorem);
-            setBackgroundToImg(textBubble2Text, "./canoe.jpeg");
-            textBubble3Text.text(lorem);
-            textBubble4Text.text(lorem);
+            // textBubble1Text.text(lorem);
+            // setBackgroundToImg(textBubble2Text, "./canoe.jpeg");
+            // textBubble3Text.text(lorem);
+            // textBubble4Text.text(lorem);
         }, 0);
 
         setTimeout(() => {
             usBlock.css("animation-play-state", "running");
-            textBubble1Text.css("animation-play-state", "running");
+            animationContainer.css("animation-play-state", "running");
+            setBackgroundToImg(textBubble, "./canoe.jpeg");
+            //textBubble1Text.css("animation-play-state", "running");
         }, timeUnit);
 
         setTimeout(() => {
-            textBubble2Text.css("animation-play-state", "running");
-            fadeImg(textBubble2Text, "fade-out-canoe");
+            usBlock.css("animation-play-state", "paused");
+            // usBlock.addClass("slide-left");
+            // usBlock.removeClass("slide-up");
+            //
+            // clearInterval(interval);
+            // window.scrollTo(0, 0);
         }, timeUnit * 2);
 
         setTimeout(() => {
-            usBlock.css("animation-play-state", "paused");
-            usBlock.addClass("slide-up");
-            usBlock.removeClass("slide-right");
-            setBackgroundToText(textBubble2Text);
-        }, timeUnit * 3);
-
-        setTimeout(() => {
+            // animationContainer.removeClass("slide-right-1");
+            // animationContainer.addClass("slide-right-2");
             usBlock.css("animation-play-state", "running");
-        }, timeUnit * 4);
-
-        setTimeout(() => {
-            textBubble3Text.css("animation-play-state", "running");
-        }, (timeUnit * 4) + 2000);
-
-        setTimeout(() => {
-            usBlock.css("animation-play-state", "paused");
-            usBlock.addClass("slide-left");
-            usBlock.removeClass("slide-up");
-
-            clearInterval(interval);
-            window.scrollTo(0, 0);
-        }, timeUnit * 5);
-
-        setTimeout(() => {
-            usBlock.css("animation-play-state", "running");
-        }, timeUnit * 6);
-
-        setTimeout(() => {
-            textBubble4Text.css("animation-play-state", "running");
-        }, timeUnit * 7);
-
-        setTimeout(() => {
-            usBlock.css("animation-play-state", "paused");
-            setBackgroundToImg(textBubble3Text, "./canoe.jpeg");
-        }, (timeUnit * 8) + 500);
+            animationContainer.css("animation-play-state", "running");
+            //textBubble1Text.css("animation-play-state", "running");
+        }, timeUnit);
     });
 })();
