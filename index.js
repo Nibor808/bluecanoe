@@ -4,11 +4,9 @@
             "Hello! We're Jess and Robin and this is our blue canoe. During the pandemic in 2020 we decided to make more time for the out doors.";
 
         const usBlock = $("#us");
-        const us2 = document.querySelector("#us");
+        // const us2 = document.querySelector("#us");
         const animationContainer = $("#animation-container");
         const textContainer = $("#text-container");
-
-        console.log("====> TEST");
 
         const textBubble = $("#text");
         textBubble.css("animation", "fade-text-out 10s ease forwards");
