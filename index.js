@@ -8,6 +8,8 @@
         const animationContainer = $("#animation-container");
         const textContainer = $("#text-container");
 
+        console.log("====> TEST");
+
         const textBubble = $("#text");
         textBubble.css("animation", "fade-text-out 10s ease forwards");
 
