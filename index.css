@@ -4,7 +4,8 @@
 }
 
 :root {
-    --slide-distance: calc(var(--container-width) - 780px);
+    --slide-distance-full: calc(var(--container-width) - 780px);
+    --slide-distance-quarter: 25vw;
 }
 
 body {
@@ -42,26 +43,38 @@ header {
     z-index: 9999;
 }
 
-
 #text {
     height: 300px;
     width: 300px;
 }
 
-.slide-right {
-    animation: slide-right 5s normal forwards;
+.slide-right-full {
+    animation: slide-right-full 5000ms normal forwards;
+}
+
+.slide-right-half {
+    animation: slide-right-half 5000ms normal forwards;
 }
 
 .rotate {
     animation: us-rotate 0.7s infinite;
 }
 
-@keyframes slide-right {
+@keyframes slide-right-full {
     from {
+        margin-left: var(--slide-distance-quarter);
+    }
+    to {
+        margin-left: var(--slide-distance-full);
+    }
+}
+
+@keyframes slide-right-half {
+    form {
         margin-left: 5px;
     }
     to {
-        margin-left: var(--slide-distance);
+        margin-left: var(--slide-distance-quarter);
     }
 }
 
@@ -95,12 +108,21 @@ header {
     }
 }
 
-@keyframes fade-in-image {
+@keyframes fade-image-in {
     0% {
         opacity: 0;
     }
     100% {
         opacity: 100%;
+    }
+}
+
+@keyframes fade-image-out {
+    0% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0;
     }
 }
 
