@@ -8,8 +8,6 @@
         const animationContainer = $("#animation-container");
         const textContainer = $("#text-container");
 
-        console.log("====> TEST");
-
         const textBubble = $("#text");
         textBubble.css("animation", "fade-text-out 10s ease forwards");
 
@@ -26,7 +24,7 @@
 
             bubble.css("background", `url(${url}) no-repeat center`);
             bubble.css("height", "300px");
-            bubble.css("animation", "fade-in-canoe 2s ease forwards");
+            bubble.css("animation", "fade-in-img 2s ease forwards");
             bubble.css("animation-play-state", "running");
         };
 

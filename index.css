@@ -39,7 +39,6 @@ header {
     z-index: 9999;
 }
 
-
 #text {
     height: 300px;
     width: 300px;
@@ -117,7 +116,7 @@ header {
     }
 }
 
-@keyframes fade-in-canoe {
+@keyframes fade-in-img {
     0% {
         opacity: 0;
     }
